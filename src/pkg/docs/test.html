@@ -1,0 +1,262 @@
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "/src/pkg/src/test"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+this is used to test the client connector
+</p>
+<p>
+This is used to test that the event generator reads the strings that encode
+events correctly and creates the correct Event objects.
+</p>
+<p>
+this is used to test the client connector
+</p>
+<p>
+This class is used to check that the event scheduler delivers the events
+in the order that the client expects.
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="#AbstractTest">type AbstractTest</a></dd>
+				
+				
+			
+				
+				<dd><a href="#TestClientConnector">type TestClientConnector</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TestClientConnector.Run">func (tester TestClientConnector) Run()</a></dd>
+				
+			
+				
+				<dd><a href="#TestEventGenerator">type TestEventGenerator</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TestEventGenerator.Run">func (tester TestEventGenerator) Run()</a></dd>
+				
+			
+				
+				<dd><a href="#TestEventProcessor">type TestEventProcessor</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TestEventProcessor.Run">func (tester TestEventProcessor) Run()</a></dd>
+				
+			
+				
+				<dd><a href="#TestEventScheduler">type TestEventScheduler</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TestEventScheduler.Run">func (tester TestEventScheduler) Run()</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h4>Package files</h4>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/pkg/src/test/AbstractTest.go">AbstractTest.go</a>
+			
+				<a href="/src/pkg/src/test/TestClientConnector.go">TestClientConnector.go</a>
+			
+				<a href="/src/pkg/src/test/TestEventGenerator.go">TestEventGenerator.go</a>
+			
+				<a href="/src/pkg/src/test/TestEventProcessor.go">TestEventProcessor.go</a>
+			
+				<a href="/src/pkg/src/test/TestEventScheduler.go">TestEventScheduler.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+		
+		
+		
+			
+			
+			<h2 id="AbstractTest">type <a href="/src/pkg/src/test/AbstractTest.go?s=14:52#L1">AbstractTest</a></h2>
+			<pre>type AbstractTest interface {
+    Run()
+}</pre>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="TestClientConnector">type <a href="/src/pkg/src/test/TestClientConnector.go?s=126:175#L3">TestClientConnector</a></h2>
+			<pre>type TestClientConnector struct {
+    <a href="#AbstractTest">AbstractTest</a>
+}</pre>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="TestClientConnector.Run">func (TestClientConnector) <a href="/src/pkg/src/test/TestClientConnector.go?s=1018:1057#L30">Run</a></h3>
+				<pre>func (tester <a href="#TestClientConnector">TestClientConnector</a>) Run()</pre>
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TestEventGenerator">type <a href="/src/pkg/src/test/TestEventGenerator.go?s=230:278#L5">TestEventGenerator</a></h2>
+			<pre>type TestEventGenerator struct {
+    <a href="#AbstractTest">AbstractTest</a>
+}</pre>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="TestEventGenerator.Run">func (TestEventGenerator) <a href="/src/pkg/src/test/TestEventGenerator.go?s=1579:1617#L47">Run</a></h3>
+				<pre>func (tester <a href="#TestEventGenerator">TestEventGenerator</a>) Run()</pre>
+				<p>
+test various events
+</p>
+
+				
+				
+			
+		
+			
+			
+			<h2 id="TestEventProcessor">type <a href="/src/pkg/src/test/TestEventProcessor.go?s=151:199#L5">TestEventProcessor</a></h2>
+			<pre>type TestEventProcessor struct {
+    <a href="#AbstractTest">AbstractTest</a>
+}</pre>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="TestEventProcessor.Run">func (TestEventProcessor) <a href="/src/pkg/src/test/TestEventProcessor.go?s=1383:1421#L48">Run</a></h3>
+				<pre>func (tester <a href="#TestEventProcessor">TestEventProcessor</a>) Run()</pre>
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TestEventScheduler">type <a href="/src/pkg/src/test/TestEventScheduler.go?s=198:246#L4">TestEventScheduler</a></h2>
+			<pre>type TestEventScheduler struct {
+    <a href="#AbstractTest">AbstractTest</a>
+}</pre>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="TestEventScheduler.Run">func (TestEventScheduler) <a href="/src/pkg/src/test/TestEventScheduler.go?s=1418:1456#L41">Run</a></h3>
+				<pre>func (tester <a href="#TestEventScheduler">TestEventScheduler</a>) Run()</pre>
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+

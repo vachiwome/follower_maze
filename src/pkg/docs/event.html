@@ -1,0 +1,492 @@
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "/src/pkg/src/event"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+This is a basic event that implements the event interface.
+This event only has a sequence number and a payload. It is also labelled with its type
+</p>
+<h3 id="hdr-This_is_Broadcast_event">This is Broadcast event</h3>
+<p>
+Interface for all the events that the server can recieve
+</p>
+<p>
+This is a private message event.
+For this event, we need to know which client wants to send which client a message
+</p>
+<p>
+This is a status update event
+For this event we need to know which client is sending the status updates.
+so that we can know which clients follow the former.
+</p>
+<p>
+This is the Unfollow event.
+We need to know which client is &#34;unfollowing&#34; which client
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="#pkg-constants">Constants</a></dd>
+			
+			
+			
+			
+				
+				<dd><a href="#BasicEvent">type BasicEvent</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewBasicEvent">func NewBasicEvent(sequence int, eventType int, payLoad string) *BasicEvent</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#BasicEvent.GetEventType">func (event BasicEvent) GetEventType() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#BasicEvent.GetPayLoad">func (event BasicEvent) GetPayLoad() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#BasicEvent.GetSequence">func (event BasicEvent) GetSequence() int</a></dd>
+				
+			
+				
+				<dd><a href="#BroadcastEvent">type BroadcastEvent</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewBroadcastEvent">func NewBroadcastEvent(sequence int, payLoad string) *BroadcastEvent</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Event">type Event</a></dd>
+				
+				
+			
+				
+				<dd><a href="#FollowEvent">type FollowEvent</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewFollowEvent">func NewFollowEvent(sequence int, payLoad string, fromClient int, toClient int) *FollowEvent</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FollowEvent.GetFromClient">func (event FollowEvent) GetFromClient() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FollowEvent.GetToClient">func (event FollowEvent) GetToClient() int</a></dd>
+				
+			
+				
+				<dd><a href="#PrivateMsgEvent">type PrivateMsgEvent</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewPrivateMsgEvent">func NewPrivateMsgEvent(sequence int, payLoad string, fromClient int, toClient int) *PrivateMsgEvent</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PrivateMsgEvent.GetFromClient">func (event PrivateMsgEvent) GetFromClient() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PrivateMsgEvent.GetToClient">func (event PrivateMsgEvent) GetToClient() int</a></dd>
+				
+			
+				
+				<dd><a href="#StatusUpdateEvent">type StatusUpdateEvent</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewStatusUpdateEvent">func NewStatusUpdateEvent(sequence int, payLoad string, fromClient int) *StatusUpdateEvent</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#StatusUpdateEvent.GetFromClient">func (event StatusUpdateEvent) GetFromClient() int</a></dd>
+				
+			
+				
+				<dd><a href="#UnFollowEvent">type UnFollowEvent</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewUnFollowEvent">func NewUnFollowEvent(sequence int, payLoad string, fromClient int, toClient int) *UnFollowEvent</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#UnFollowEvent.GetFromClient">func (event UnFollowEvent) GetFromClient() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#UnFollowEvent.GetToClient">func (event UnFollowEvent) GetToClient() int</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h4>Package files</h4>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/pkg/src/event/BasicEvent.go">BasicEvent.go</a>
+			
+				<a href="/src/pkg/src/event/BroadcastEvent.go">BroadcastEvent.go</a>
+			
+				<a href="/src/pkg/src/event/Event.go">Event.go</a>
+			
+				<a href="/src/pkg/src/event/FollowEvent.go">FollowEvent.go</a>
+			
+				<a href="/src/pkg/src/event/PrivateMsgEvent.go">PrivateMsgEvent.go</a>
+			
+				<a href="/src/pkg/src/event/StatusUpdateEvent.go">StatusUpdateEvent.go</a>
+			
+				<a href="/src/pkg/src/event/UnFollowEvent.go">UnFollowEvent.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<pre>const (
+    <span id="FOLLOW">FOLLOW</span>        = 0
+    <span id="UNFOLLOW">UNFOLLOW</span>      = 1
+    <span id="PRIVATE_MSG">PRIVATE_MSG</span>   = 2
+    <span id="STATUS_UPDATE">STATUS_UPDATE</span> = 3
+    <span id="BROADCAST">BROADCAST</span>     = 4
+)</pre>
+				<p>
+Integer codes for the different possible events.
+</p>
+
+			
+		
+		
+		
+		
+			
+			
+			<h2 id="BasicEvent">type <a href="/src/pkg/src/event/BasicEvent.go?s=387:466#L1">BasicEvent</a></h2>
+			<pre>type BasicEvent struct {
+    <a href="#Event">Event</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			<p>
+This is the constructor for a basic event.
+sequence - the sequence number for this event.
+eventType - this represents the type of event in question (refer to file Event.go to see the list of possible values).
+</p>
+
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewBasicEvent">func <a href="/src/pkg/src/event/BasicEvent.go?s=506:581#L6">NewBasicEvent</a></h3>
+				<pre>func NewBasicEvent(sequence <a href="/pkg/builtin/#int">int</a>, eventType <a href="/pkg/builtin/#int">int</a>, payLoad <a href="/pkg/builtin/#string">string</a>) *<a href="#BasicEvent">BasicEvent</a></pre>
+				<p>
+constructor for a new basic event.
+</p>
+
+				
+			
+
+			
+				
+				<h3 id="BasicEvent.GetEventType">func (BasicEvent) <a href="/src/pkg/src/event/BasicEvent.go?s=782:824#L18">GetEventType</a></h3>
+				<pre>func (event <a href="#BasicEvent">BasicEvent</a>) GetEventType() <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="BasicEvent.GetPayLoad">func (BasicEvent) <a href="/src/pkg/src/event/BasicEvent.go?s=854:897#L22">GetPayLoad</a></h3>
+				<pre>func (event <a href="#BasicEvent">BasicEvent</a>) GetPayLoad() <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="BasicEvent.GetSequence">func (BasicEvent) <a href="/src/pkg/src/event/BasicEvent.go?s=709:750#L14">GetSequence</a></h3>
+				<pre>func (event <a href="#BasicEvent">BasicEvent</a>) GetSequence() <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BroadcastEvent">type <a href="/src/pkg/src/event/BroadcastEvent.go?s=42:84#L1">BroadcastEvent</a></h2>
+			<pre>type BroadcastEvent struct {
+    <a href="#BasicEvent">BasicEvent</a>
+}</pre>
+			
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewBroadcastEvent">func <a href="/src/pkg/src/event/BroadcastEvent.go?s=127:195#L1">NewBroadcastEvent</a></h3>
+				<pre>func NewBroadcastEvent(sequence <a href="/pkg/builtin/#int">int</a>, payLoad <a href="/pkg/builtin/#string">string</a>) *<a href="#BroadcastEvent">BroadcastEvent</a></pre>
+				<p>
+Constructor for a new broadcast event
+</p>
+
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Event">type <a href="/src/pkg/src/event/Event.go?s=215:343#L3">Event</a></h2>
+			<pre>type Event interface {
+    GetSequence() <a href="/pkg/builtin/#int">int</a>
+    GetEventType() <a href="/pkg/builtin/#int">int</a>
+    GetPayLoad() <a href="/pkg/builtin/#string">string</a>
+    GetToClient() <a href="/pkg/builtin/#int">int</a>
+    GetFromClient() <a href="/pkg/builtin/#int">int</a>
+}</pre>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="FollowEvent">type <a href="/src/pkg/src/event/FollowEvent.go?s=254:323#L1">FollowEvent</a></h2>
+			<pre>type FollowEvent struct {
+    <a href="#BasicEvent">BasicEvent</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			<p>
+This is the event of type FOLLOW.
+fromClient- this is the client that wants to follow.
+toClient - this is the client that is being followed.
+</p>
+
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewFollowEvent">func <a href="/src/pkg/src/event/FollowEvent.go?s=325:417#L5">NewFollowEvent</a></h3>
+				<pre>func NewFollowEvent(sequence <a href="/pkg/builtin/#int">int</a>, payLoad <a href="/pkg/builtin/#string">string</a>, fromClient <a href="/pkg/builtin/#int">int</a>, toClient <a href="/pkg/builtin/#int">int</a>) *<a href="#FollowEvent">FollowEvent</a></pre>
+				
+				
+			
+
+			
+				
+				<h3 id="FollowEvent.GetFromClient">func (FollowEvent) <a href="/src/pkg/src/event/FollowEvent.go?s=601:645#L15">GetFromClient</a></h3>
+				<pre>func (event <a href="#FollowEvent">FollowEvent</a>) GetFromClient() <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="FollowEvent.GetToClient">func (FollowEvent) <a href="/src/pkg/src/event/FollowEvent.go?s=679:721#L19">GetToClient</a></h3>
+				<pre>func (event <a href="#FollowEvent">FollowEvent</a>) GetToClient() <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="PrivateMsgEvent">type <a href="/src/pkg/src/event/PrivateMsgEvent.go?s=345:418#L1">PrivateMsgEvent</a></h2>
+			<pre>type PrivateMsgEvent struct {
+    <a href="#BasicEvent">BasicEvent</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			<p>
+This is the class that encodes a Private Message instance.
+fromClient - this is the client that is sending the private message
+toClient - this is the client to which the private message is being sent
+</p>
+
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewPrivateMsgEvent">func <a href="/src/pkg/src/event/PrivateMsgEvent.go?s=420:520#L4">NewPrivateMsgEvent</a></h3>
+				<pre>func NewPrivateMsgEvent(sequence <a href="/pkg/builtin/#int">int</a>, payLoad <a href="/pkg/builtin/#string">string</a>, fromClient <a href="/pkg/builtin/#int">int</a>, toClient <a href="/pkg/builtin/#int">int</a>) *<a href="#PrivateMsgEvent">PrivateMsgEvent</a></pre>
+				
+				
+			
+
+			
+				
+				<h3 id="PrivateMsgEvent.GetFromClient">func (PrivateMsgEvent) <a href="/src/pkg/src/event/PrivateMsgEvent.go?s=713:761#L14">GetFromClient</a></h3>
+				<pre>func (event <a href="#PrivateMsgEvent">PrivateMsgEvent</a>) GetFromClient() <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="PrivateMsgEvent.GetToClient">func (PrivateMsgEvent) <a href="/src/pkg/src/event/PrivateMsgEvent.go?s=795:841#L18">GetToClient</a></h3>
+				<pre>func (event <a href="#PrivateMsgEvent">PrivateMsgEvent</a>) GetToClient() <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StatusUpdateEvent">type <a href="/src/pkg/src/event/StatusUpdateEvent.go?s=338:399#L1">StatusUpdateEvent</a></h2>
+			<pre>type StatusUpdateEvent struct {
+    <a href="#BasicEvent">BasicEvent</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			<p>
+This is the class that represents the status update events.
+fromClient - this is the client that is sending the status update events to its clients.
+</p>
+
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewStatusUpdateEvent">func <a href="/src/pkg/src/event/StatusUpdateEvent.go?s=457:547#L4">NewStatusUpdateEvent</a></h3>
+				<pre>func NewStatusUpdateEvent(sequence <a href="/pkg/builtin/#int">int</a>, payLoad <a href="/pkg/builtin/#string">string</a>, fromClient <a href="/pkg/builtin/#int">int</a>) *<a href="#StatusUpdateEvent">StatusUpdateEvent</a></pre>
+				<p>
+This is the constructor for the status update events
+</p>
+
+				
+			
+
+			
+				
+				<h3 id="StatusUpdateEvent.GetFromClient">func (StatusUpdateEvent) <a href="/src/pkg/src/event/StatusUpdateEvent.go?s=717:767#L13">GetFromClient</a></h3>
+				<pre>func (event <a href="#StatusUpdateEvent">StatusUpdateEvent</a>) GetFromClient() <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="UnFollowEvent">type <a href="/src/pkg/src/event/UnFollowEvent.go?s=323:394#L1">UnFollowEvent</a></h2>
+			<pre>type UnFollowEvent struct {
+    <a href="#BasicEvent">BasicEvent</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			<p>
+This is the class that is used to represent the unfollow event.
+fromClient - this is the client that wants to stop following.
+toClient - this is the client that was being followed but will not be anymore.
+</p>
+
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewUnFollowEvent">func <a href="/src/pkg/src/event/UnFollowEvent.go?s=448:544#L5">NewUnFollowEvent</a></h3>
+				<pre>func NewUnFollowEvent(sequence <a href="/pkg/builtin/#int">int</a>, payLoad <a href="/pkg/builtin/#string">string</a>, fromClient <a href="/pkg/builtin/#int">int</a>, toClient <a href="/pkg/builtin/#int">int</a>) *<a href="#UnFollowEvent">UnFollowEvent</a></pre>
+				<p>
+this is the constructor for a new unfollow event
+</p>
+
+				
+			
+
+			
+				
+				<h3 id="UnFollowEvent.GetFromClient">func (UnFollowEvent) <a href="/src/pkg/src/event/UnFollowEvent.go?s=732:778#L15">GetFromClient</a></h3>
+				<pre>func (event <a href="#UnFollowEvent">UnFollowEvent</a>) GetFromClient() <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="UnFollowEvent.GetToClient">func (UnFollowEvent) <a href="/src/pkg/src/event/UnFollowEvent.go?s=812:856#L19">GetToClient</a></h3>
+				<pre>func (event <a href="#UnFollowEvent">UnFollowEvent</a>) GetToClient() <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+

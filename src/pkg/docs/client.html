@@ -1,0 +1,286 @@
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "/src/pkg/src/client"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+This is a basic client that has an identifier and followers
+This client may or may not be registered via a socket
+</p>
+<p>
+This is the interface of all types of clients that associate with the server.
+In this package, a client can either have a socket connection associated with it or not.
+</p>
+<p>
+This is a client which the server can communicate with.
+The server has a socket associated with this client
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="#BasicClient">type BasicClient</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewBasicClient">func NewBasicClient(id int) *BasicClient</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#BasicClient.AddFollower">func (client BasicClient) AddFollower(follower int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#BasicClient.GetFollowers">func (client BasicClient) GetFollowers() map[int]bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#BasicClient.GetId">func (client BasicClient) GetId() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#BasicClient.GetIsConnected">func (client BasicClient) GetIsConnected() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#BasicClient.RemoveFollower">func (client BasicClient) RemoveFollower(follower int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#BasicClient.SendEvent">func (client BasicClient) SendEvent(payLoad string)</a></dd>
+				
+			
+				
+				<dd><a href="#Client">type Client</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ConnectedClient">type ConnectedClient</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewConnectedClient">func NewConnectedClient(id int, connection net.Conn) *ConnectedClient</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConnectedClient.SendEvent">func (client ConnectedClient) SendEvent(payLoad string)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h4>Package files</h4>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/pkg/src/client/BasicClient.go">BasicClient.go</a>
+			
+				<a href="/src/pkg/src/client/Client.go">Client.go</a>
+			
+				<a href="/src/pkg/src/client/ConnectedClient.go">ConnectedClient.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+		
+		
+		
+			
+			
+			<h2 id="BasicClient">type <a href="/src/pkg/src/client/BasicClient.go?s=382:467#L1">BasicClient</a></h2>
+			<pre>type BasicClient struct {
+    <a href="#Client">Client</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			<p>
+id - unique integer identifier for a client.
+isConnected - true if the client has an associated socket connection
+followers - map that contains the identifiers of the clients that follow this client. A map was used for constant access.
+</p>
+
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewBasicClient">func <a href="/src/pkg/src/client/BasicClient.go?s=514:554#L6">NewBasicClient</a></h3>
+				<pre>func NewBasicClient(id <a href="/pkg/builtin/#int">int</a>) *<a href="#BasicClient">BasicClient</a></pre>
+				<p>
+Constructor for a new un-connected client
+</p>
+
+				
+			
+
+			
+				
+				<h3 id="BasicClient.AddFollower">func (BasicClient) <a href="/src/pkg/src/client/BasicClient.go?s=812:864#L16">AddFollower</a></h3>
+				<pre>func (client <a href="#BasicClient">BasicClient</a>) AddFollower(follower <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>
+register a new follower with identifier &#34;id&#34;. It is called when a follow event is being processed.
+</p>
+
+				
+				
+			
+				
+				<h3 id="BasicClient.GetFollowers">func (BasicClient) <a href="/src/pkg/src/client/BasicClient.go?s=1551:1604#L43">GetFollowers</a></h3>
+				<pre>func (client <a href="#BasicClient">BasicClient</a>) GetFollowers() map[<a href="/pkg/builtin/#int">int</a>]<a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="BasicClient.GetId">func (BasicClient) <a href="/src/pkg/src/client/BasicClient.go?s=1490:1527#L39">GetId</a></h3>
+				<pre>func (client <a href="#BasicClient">BasicClient</a>) GetId() <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="BasicClient.GetIsConnected">func (BasicClient) <a href="/src/pkg/src/client/BasicClient.go?s=1409:1456#L35">GetIsConnected</a></h3>
+				<pre>func (client <a href="#BasicClient">BasicClient</a>) GetIsConnected() <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="BasicClient.RemoveFollower">func (BasicClient) <a href="/src/pkg/src/client/BasicClient.go?s=1069:1128#L22">RemoveFollower</a></h3>
+				<pre>func (client <a href="#BasicClient">BasicClient</a>) RemoveFollower(follower <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				<p>
+Remove s follower that has identifier &#34;id&#34; from the this client&#39;s followers.
+Returns true if this client was being followed by &#39;follower&#39; else returns false.
+</p>
+
+				
+				
+			
+				
+				<h3 id="BasicClient.SendEvent">func (BasicClient) <a href="/src/pkg/src/client/BasicClient.go?s=1337:1388#L31">SendEvent</a></h3>
+				<pre>func (client <a href="#BasicClient">BasicClient</a>) SendEvent(payLoad <a href="/pkg/builtin/#string">string</a>)</pre>
+				<p>
+a stub for sending an event to a client that does not have an associated socket connection
+</p>
+
+				
+				
+			
+		
+			
+			
+			<h2 id="Client">type <a href="/src/pkg/src/client/Client.go?s=189:368#L1">Client</a></h2>
+			<pre>type Client interface {
+    AddFollower(follower <a href="/pkg/builtin/#int">int</a>)
+    RemoveFollower(follower <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#bool">bool</a>
+    SendEvent(payLoad <a href="/pkg/builtin/#string">string</a>)
+    GetIsConnected() <a href="/pkg/builtin/#bool">bool</a>
+    GetId() <a href="/pkg/builtin/#int">int</a>
+    GetFollowers() map[<a href="/pkg/builtin/#int">int</a>]<a href="/pkg/builtin/#bool">bool</a>
+}</pre>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ConnectedClient">type <a href="/src/pkg/src/client/ConnectedClient.go?s=158:224#L1">ConnectedClient</a></h2>
+			<pre>type ConnectedClient struct {
+    <a href="#BasicClient">BasicClient</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewConnectedClient">func <a href="/src/pkg/src/client/ConnectedClient.go?s=310:379#L6">NewConnectedClient</a></h3>
+				<pre>func NewConnectedClient(id <a href="/pkg/builtin/#int">int</a>, connection <a href="/pkg/net/">net</a>.<a href="/pkg/net/#Conn">Conn</a>) *<a href="#ConnectedClient">ConnectedClient</a></pre>
+				<p>
+A client that is created when the server accepts the client&#39;s connection request
+</p>
+
+				
+			
+
+			
+				
+				<h3 id="ConnectedClient.SendEvent">func (ConnectedClient) <a href="/src/pkg/src/client/ConnectedClient.go?s=648:703#L18">SendEvent</a></h3>
+				<pre>func (client <a href="#ConnectedClient">ConnectedClient</a>) SendEvent(payLoad <a href="/pkg/builtin/#string">string</a>)</pre>
+				<p>
+Write the data to the client via the socket
+</p>
+
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+

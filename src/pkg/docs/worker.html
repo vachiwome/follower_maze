@@ -1,0 +1,385 @@
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "/src/pkg/src/worker"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+This thread is responsible for receiving client
+connection requests
+</p>
+<p>
+This worker is responsible for receiving events from the
+events source and passing them to the master program.
+</p>
+<p>
+This worker is responsible for processing the events
+that are received, sending them to the appropriate users
+and modifying the appropriate data structures
+</p>
+<p>
+This is the worker that is responsible for scheduling the events
+This scheduler is optimized for the delivery of the events in
+increasing magnitude of the sequence numbers.
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="#ClientConnector">type ClientConnector</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewClientConnector">func NewClientConnector(port string) *ClientConnector</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ClientConnector.NextClient">func (clientConnector ClientConnector) NextClient() *client.ConnectedClient</a></dd>
+				
+			
+				
+				<dd><a href="#EventGenerator">type EventGenerator</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewEventGenerator">func NewEventGenerator(eventSource string) *EventGenerator</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#EventGenerator.NextEvent">func (eventGen EventGenerator) NextEvent() event.Event</a></dd>
+				
+			
+				
+				<dd><a href="#EventHeap">type EventHeap</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#EventHeap.Len">func (events EventHeap) Len() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#EventHeap.Less">func (events EventHeap) Less(i, j int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#EventHeap.Pop">func (events *EventHeap) Pop() interface{}</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#EventHeap.Push">func (events *EventHeap) Push(e interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#EventHeap.Swap">func (events EventHeap) Swap(i, j int)</a></dd>
+				
+			
+				
+				<dd><a href="#EventProcessor">type EventProcessor</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewEventProcessor">func NewEventProcessor() *EventProcessor</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#EventProcessor.ProcessEvent">func (eventProc EventProcessor) ProcessEvent(e event.Event, clients map[int]client.Client) map[int]client.Client</a></dd>
+				
+			
+				
+				<dd><a href="#EventScheduler">type EventScheduler</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewEventScheduler">func NewEventScheduler(eventGenerator *EventGenerator, maxBuffSize int) *EventScheduler</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#EventScheduler.NextEvent">func (scheduler EventScheduler) NextEvent(expected int) (event.Event, bool)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h4>Package files</h4>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/pkg/src/worker/ClientConnector.go">ClientConnector.go</a>
+			
+				<a href="/src/pkg/src/worker/EventGenerator.go">EventGenerator.go</a>
+			
+				<a href="/src/pkg/src/worker/EventProcessor.go">EventProcessor.go</a>
+			
+				<a href="/src/pkg/src/worker/EventScheduler.go">EventScheduler.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+		
+		
+		
+			
+			
+			<h2 id="ClientConnector">type <a href="/src/pkg/src/worker/ClientConnector.go?s=253:314#L4">ClientConnector</a></h2>
+			<pre>type ClientConnector struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			<p>
+listener - specifies an object that waits for connection requests
+</p>
+
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewClientConnector">func <a href="/src/pkg/src/worker/ClientConnector.go?s=370:423#L9">NewClientConnector</a></h3>
+				<pre>func NewClientConnector(port <a href="/pkg/builtin/#string">string</a>) *<a href="#ClientConnector">ClientConnector</a></pre>
+				<p>
+This is the constructor for a new client connector
+</p>
+
+				
+			
+
+			
+				
+				<h3 id="ClientConnector.NextClient">func (ClientConnector) <a href="/src/pkg/src/worker/ClientConnector.go?s=731:806#L20">NextClient</a></h3>
+				<pre>func (clientConnector <a href="#ClientConnector">ClientConnector</a>) NextClient() *<a href="/pkg/../client/">client</a>.<a href="/pkg/../client/#ConnectedClient">ConnectedClient</a></pre>
+				<p>
+This is the method for getting the next client that has requested to connect
+</p>
+
+				
+				
+			
+		
+			
+			
+			<h2 id="EventGenerator">type <a href="/src/pkg/src/worker/EventGenerator.go?s=441:527#L6">EventGenerator</a></h2>
+			<pre>type EventGenerator struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			<p>
+connector - this is the instance that connects this class to the sockets that produces the stream of events
+reader - reader that is used for reading the strings that encode different events
+</p>
+
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewEventGenerator">func <a href="/src/pkg/src/worker/EventGenerator.go?s=582:640#L12">NewEventGenerator</a></h3>
+				<pre>func NewEventGenerator(eventSource <a href="/pkg/builtin/#string">string</a>) *<a href="#EventGenerator">EventGenerator</a></pre>
+				<p>
+This is the constructor for a new event generator
+</p>
+
+				
+			
+
+			
+				
+				<h3 id="EventGenerator.NextEvent">func (EventGenerator) <a href="/src/pkg/src/worker/EventGenerator.go?s=2193:2247#L57">NextEvent</a></h3>
+				<pre>func (eventGen <a href="#EventGenerator">EventGenerator</a>) NextEvent() <a href="/pkg/../event/">event</a>.<a href="/pkg/../event/#Event">Event</a></pre>
+				<p>
+Method for getting the next available event
+</p>
+
+				
+				
+			
+		
+			
+			
+			<h2 id="EventHeap">type <a href="/src/pkg/src/worker/EventScheduler.go?s=399:427#L3">EventHeap</a></h2>
+			<pre>type EventHeap []<a href="/pkg/../event/">event</a>.<a href="/pkg/../event/#Event">Event</a></pre>
+			<p>
+A min-heap is being used to store the events so that adding an event and extracting the
+event that has the minimum sequence number occurs in O(log(n))
+</p>
+
+
+			
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="EventHeap.Len">func (EventHeap) <a href="/src/pkg/src/worker/EventScheduler.go?s=429:462#L5">Len</a></h3>
+				<pre>func (events <a href="#EventHeap">EventHeap</a>) Len() <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="EventHeap.Less">func (EventHeap) <a href="/src/pkg/src/worker/EventScheduler.go?s=489:532#L9">Less</a></h3>
+				<pre>func (events <a href="#EventHeap">EventHeap</a>) Less(i, j <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="EventHeap.Pop">func (*EventHeap) <a href="/src/pkg/src/worker/EventScheduler.go?s=782:824#L21">Pop</a></h3>
+				<pre>func (events *<a href="#EventHeap">EventHeap</a>) Pop() interface{}</pre>
+				
+				
+				
+			
+				
+				<h3 id="EventHeap.Push">func (*EventHeap) <a href="/src/pkg/src/worker/EventScheduler.go?s=688:732#L17">Push</a></h3>
+				<pre>func (events *<a href="#EventHeap">EventHeap</a>) Push(e interface{})</pre>
+				
+				
+				
+			
+				
+				<h3 id="EventHeap.Swap">func (EventHeap) <a href="/src/pkg/src/worker/EventScheduler.go?s=598:636#L13">Swap</a></h3>
+				<pre>func (events <a href="#EventHeap">EventHeap</a>) Swap(i, j <a href="/pkg/builtin/#int">int</a>)</pre>
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="EventProcessor">type <a href="/src/pkg/src/worker/EventProcessor.go?s=240:269#L2">EventProcessor</a></h2>
+			<pre>type EventProcessor struct{}</pre>
+			
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewEventProcessor">func <a href="/src/pkg/src/worker/EventProcessor.go?s=271:311#L4">NewEventProcessor</a></h3>
+				<pre>func NewEventProcessor() *<a href="#EventProcessor">EventProcessor</a></pre>
+				
+				
+			
+
+			
+				
+				<h3 id="EventProcessor.ProcessEvent">func (EventProcessor) <a href="/src/pkg/src/worker/EventProcessor.go?s=397:511#L9">ProcessEvent</a></h3>
+				<pre>func (eventProc <a href="#EventProcessor">EventProcessor</a>) ProcessEvent(e <a href="/pkg/../event/">event</a>.<a href="/pkg/../event/#Event">Event</a>, clients map[<a href="/pkg/builtin/#int">int</a>]<a href="/pkg/../client/">client</a>.<a href="/pkg/../client/#Client">Client</a>) map[<a href="/pkg/builtin/#int">int</a>]<a href="/pkg/../client/">client</a>.<a href="/pkg/../client/#Client">Client</a></pre>
+				<p>
+This is the method that processes events
+</p>
+
+				
+				
+			
+		
+			
+			
+			<h2 id="EventScheduler">type <a href="/src/pkg/src/worker/EventScheduler.go?s=1465:1566#L35">EventScheduler</a></h2>
+			<pre>type EventScheduler struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			<p>
+This is the class that is used to represent an event scheduler
+eventGenerator - this is the object that generates the events that this class will schedule
+eventHeap - this is the data structure that stores the events that have been generated but are yet to be dilivered
+maxBuffSize - this is the maximum number of events that can be stored on the machine.
+</p>
+<pre>If the buffer becomes full, the events will no longer be send in the right order.
+However, if the buffer never becomes full, then all events will be send in the right order.
+</pre>
+
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewEventScheduler">func <a href="/src/pkg/src/worker/EventScheduler.go?s=1621:1708#L42">NewEventScheduler</a></h3>
+				<pre>func NewEventScheduler(eventGenerator *<a href="#EventGenerator">EventGenerator</a>, maxBuffSize <a href="/pkg/builtin/#int">int</a>) *<a href="#EventScheduler">EventScheduler</a></pre>
+				<p>
+This is the constructor for a new event scheduler
+</p>
+
+				
+			
+
+			
+				
+				<h3 id="EventScheduler.NextEvent">func (EventScheduler) <a href="/src/pkg/src/worker/EventScheduler.go?s=2054:2129#L57">NextEvent</a></h3>
+				<pre>func (scheduler <a href="#EventScheduler">EventScheduler</a>) NextEvent(expected <a href="/pkg/builtin/#int">int</a>) (<a href="/pkg/../event/">event</a>.<a href="/pkg/../event/#Event">Event</a>, <a href="/pkg/builtin/#bool">bool</a>)</pre>
+				<p>
+Method for getting the event with sequence number &#34;expected&#34;
+The buffer is
+</p>
+
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
